@@ -1,0 +1,52 @@
+spring:
+   profiles:
+      active: default
+server:
+   contextPath: /resource-main
+   port: 8888
+
+---
+spring:
+   profiles: default
+logging:
+   file: logs/default_app.log
+   pattern:
+      console: "%d %-5level %logger : %msg%n"
+      file: "%d %-5level [%thread] %logger : %msg%n"
+   level:
+      org.hibernate: WARN
+      org.gs1ca.itemcentre: DEBUG
+properties:
+   name:
+      app: app-default.yml
+      jdbc: jdbc-default.yml
+---
+spring:
+   profiles: qa
+logging:
+   file: logs/qa_app.log
+   pattern:
+      file: "%d %-5level [%thread] %logger : %msg%n"
+   level:
+      org.hibernate: WARN
+      org.gs1ca.itemcentre: WARN
+properties:
+   name:
+      app: app-qa.yml
+      jdbc: jdbc-qa.yml
+---
+spring:
+   profiles: product
+logging:
+   file: logs/product_app.log
+   pattern:
+      file: "%d %-5level [%thread] %logger : %msg%n"
+   level:
+      org.hibernate: WARN
+      org.gs1ca.itemcentre: WARN
+properties:
+   name:
+      app: app-product.yml
+      jdbc: jdbc-product.yml
+   
+   
