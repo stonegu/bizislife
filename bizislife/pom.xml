@@ -8,5 +8,6 @@
   <name>bizislife</name>
   <modules>
     <module>bizislife-oauth-server</module>
+    <module>bizislife-resource-main</module>
   </modules>
 </project>
