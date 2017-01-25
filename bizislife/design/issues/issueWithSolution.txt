@@ -1,0 +1,24 @@
+MySql Related:
+==============
+
+Issue #1:
+---------
+Could not get JDBC Connection; nested exception is org.apache.commons.dbcp.SQLNestedException: Cannot create PoolableConnectionFactory (Could not create connection to database server. Attempted reconnect 3 times. Giving up
+Solution:
+---------
+Cause
+-----
+There is a bug, #61201, which was introduced in MySQL 5.1.16 which causes an error in the connection when the JDBC URL has both "sessionVariables" and "characterEncoding" parameters at the same time, for example:
+url="jdbc:mysql://localhost:3306/jiradb?autoReconnect=true&useUnicode=true&characterEncoding=utf8&sessionVariables=storage_engine=InnoDB"
+Additionally there is another bug, #72630 that can cause problems when the file encoding is incorrectly specified - for example -Dfile.encoding=ut-8. This should be -Dfile.encoding=utf-8
+Workaround
+----------
+The available workarounds are:
+    Remove either the "sessionVariables" or "characterEncoding" parameters from the JDBC URL so they are not utilized at the same time. Since our doc states that characterEncoding=UTF8 should be defined in the JDBC URL, this means that the user will not be able to use the sessionVariables parameter.
+    If both parameters have to be utilized, then downgrade to the 5.1.15 driver until this issue is resolved with 5.1.16
+    Additionally ensure that the file encoding JVM argument is correctly spelt.
+Resource
+--------
+https://confluence.atlassian.com/jirakb/installing-or-upgrading-jira-fails-with-nullpointerexception-when-using-mysql-driver-v5-1-16-241567359.html
+
+

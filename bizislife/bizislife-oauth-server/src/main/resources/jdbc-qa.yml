@@ -1,6 +1,6 @@
 sql:
    jdbc:
       driverClassName: com.mysql.jdbc.Driver
-      url: jdbc:mysql://localhost:3306/bizislife-qa?autoReconnect=true&autoReconnectForPools=true&useUnicode=true&characterEncoding=utf32
+      url: jdbc:mysql://localhost:3306/bizislife-qa?autoReconnect=true&autoReconnectForPools=true&useUnicode=true&characterEncoding=utf32&useSSL=false
       username: root
       password: stone0331
