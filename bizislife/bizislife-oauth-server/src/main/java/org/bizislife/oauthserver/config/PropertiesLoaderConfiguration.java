@@ -2,6 +2,7 @@ package org.bizislife.oauthserver.config;
 
 
 import java.io.IOException;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
@@ -92,6 +93,9 @@ public class PropertiesLoaderConfiguration {
 		logger.info("****** spring.profiles.active: " + profileActive);
 		logger.info("****** properties.name.app: " + propertiesNameApp);
 		logger.info("****** properties.name.jdbc: " + propertiesNameJdbc);
+		
+		logger.info("****** Default Charset: " + Charset.defaultCharset());
+		logger.info("****** file.encoding: " + System.getProperty("file.encoding"));
 
 		return true;
 	}
