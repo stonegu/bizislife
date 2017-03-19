@@ -1,3 +1,7 @@
+CREATE DATABASE `bizislife`CHARACTER SET utf8 COLLATE utf8_general_ci; 
+USE `bizislife`; 
+
+
 DROP TABLE IF EXISTS oauth_client_details;
 CREATE TABLE oauth_client_details (
   client_id VARCHAR(255) PRIMARY KEY,
